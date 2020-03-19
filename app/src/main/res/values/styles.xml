@@ -1,0 +1,39 @@
+<resources>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textViewStyle">@style/MyTextStyle</item>
+        <item name="editTextStyle">@style/Edit_Text_Style</item>
+        <item name="buttonStyle">@style/Button_Style</item>
+        <item name="android:windowActivityTransitions">true</item>
+    </style>
+
+    <style name="TextAppearance.AppCompat.Widget.ActionBar.Title" parent="@android:style/TextAppearance">
+        <item name="android:textColor">#FFFF</item>
+    </style>
+
+    <style name="MyTextStyle" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/textColor</item>
+        <item name="android:alpha">0.64</item>
+    </style>
+
+    <style name="Edit_Text_Style" parent="Widget.AppCompat.EditText">
+        <item name="android:paddingStart">20dp</item>
+        <item name="android:paddingEnd">20dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:elevation">5dp</item>
+        <item name="android:background">@drawable/edit_text_style</item>
+    </style>
+
+    <style name="Button_Style" parent="Widget.AppCompat.Button">
+        <item name="android:paddingStart">50dp</item>
+        <item name="android:paddingEnd">50dp</item>
+        <item name="android:background">@drawable/button_style</item>
+    </style>
+
+    <style name="mToolbar" parent="AppTheme">
+        <item name="android:textColorSecondary">#FFF</item>
+    </style>
+</resources>

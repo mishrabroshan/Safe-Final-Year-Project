@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Fragments.AllContactFragment">
+
+    <LinearLayout
+        android:id="@+id/aCL_searchView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="2dp"
+        android:orientation="horizontal"
+        android:weightSum="100"
+        tools:ignore="UselessParent">
+
+        <ImageView
+            android:id="@+id/aCL_searchIcon"
+            android:layout_weight="10"
+            android:padding="5dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/ic_search"
+            android:contentDescription="@null"/>
+
+        <EditText
+            android:id="@+id/aCL_SearchEditText"
+            android:layout_weight="80"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/search"
+            android:autofillHints="no"
+            android:inputType="text"
+            android:background="@null"
+            tools:targetApi="o" />
+
+        <ImageView
+            android:id="@+id/aCL_searchClose"
+            android:layout_weight="10"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/ic_close"
+            android:visibility="gone"
+            android:contentDescription="@null"/>
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/aCL_recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/aCL_searchView"/>
+
+</RelativeLayout>
