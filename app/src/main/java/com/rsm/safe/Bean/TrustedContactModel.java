@@ -3,9 +3,9 @@ package com.rsm.safe.Bean;
 public class TrustedContactModel {
     private int ID;
     private String Name;
-    private String Number;
+    private long Number;
 
-    public TrustedContactModel(int ID, String name, String number) {
+    public TrustedContactModel(int ID, String name, long number) {
         this.ID = ID;
         Name = name;
         Number = number;
@@ -15,23 +15,11 @@ public class TrustedContactModel {
         return ID;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
-    }
-
     public String getName() {
         return Name;
     }
 
-    public void setName(String name) {
-        Name = name;
-    }
-
-    public String getNumber() {
+    public long getNumber() {
         return Number;
-    }
-
-    public void setNumber(String number) {
-        Number = number;
     }
 }
