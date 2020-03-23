@@ -37,7 +37,7 @@ public class UpdateProfile extends AppCompatActivity {
 
     private FirebaseAuth firebaseAuth;
 
-    private EditText nameText, emailText, phoneText;
+    private EditText nameText, emailText, verified;
     private ImageView profile;
     private Toolbar toolbar;
     private Button save;
@@ -51,7 +51,7 @@ public class UpdateProfile extends AppCompatActivity {
 
         nameText = findViewById(R.id.up_name);
         emailText = findViewById(R.id.up_email);
-        phoneText = findViewById(R.id.up_phone);
+        verified = findViewById(R.id.up_status);
         profile = findViewById(R.id.up_profileImage);
         toolbar = findViewById(R.id.up_toolbar);
         save = findViewById(R.id.up_save);
@@ -81,18 +81,8 @@ public class UpdateProfile extends AppCompatActivity {
                     flag = false;
                 }
 
-                if (!Patterns.PHONE.matcher(phoneText.getText().toString().trim()).matches()){
-                    phoneText.setError("Enter Valid Number");
-                    flag = false;
-                }
-
                 if (nameText.getText().toString().isEmpty()){
                     nameText.setError(ConstantsVariables.ERROR);
-                    flag = flag;
-                }
-
-                if (phoneText.getText().toString().isEmpty()){
-                    phoneText.setError(ConstantsVariables.ERROR);
                     flag = flag;
                 }
 
@@ -163,7 +153,24 @@ public class UpdateProfile extends AppCompatActivity {
     private void fillData(){
         nameText.setText(Objects.requireNonNull(firebaseAuth.getCurrentUser()).getDisplayName());
         emailText.setText(Objects.requireNonNull(firebaseAuth.getCurrentUser()).getEmail());
-        phoneText.setText(Objects.requireNonNull(firebaseAuth.getCurrentUser()).getPhoneNumber());
+        if (firebaseAuth.getCurrentUser().isEmailVerified()){
+            verified.setText(R.string.verified);
+        }
+        else {
+            verified.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    firebaseAuth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()){
+                                Toast.makeText(getApplicationContext(), "Verification Email Set", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+                }
+            });
+        }
         Picasso.get().load(firebaseAuth.getCurrentUser().getPhotoUrl()).into(profile, new Callback() {
             @Override
             public void onSuccess() {

@@ -14,7 +14,6 @@
     <!--    TODO: Below    -->
     <string name="name">Name</string>
     <string name="email_address">Email Address</string>
-    <string name="phone_number">Phone Number</string>
     <string name="sign_out">Sign out</string>
     <string name="dec">***</string>
     <string name="save">Save</string>
@@ -32,4 +31,6 @@
     <string name="update_account">Update Account</string>
     <string name="share_with_friends">Share With Friends</string>
     <string name="about_us">About us</string>
+    <string name="not_verified">Not Verified!.. Click Here To Get Verified</string>
+    <string name="verified">Verified!..</string>
 </resources>

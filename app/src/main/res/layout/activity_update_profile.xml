@@ -58,13 +58,15 @@
                 android:autofillHints="@null"/>
 
             <EditText
-                android:id="@+id/up_phone"
+                android:id="@+id/up_status"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/phone_number"
-                android:inputType="phone"
                 android:layout_margin="10dp"
-                android:autofillHints="@null"/>
+                android:autofillHints="@null"
+                android:text="@string/not_verified"
+                android:inputType="none"
+                android:clickable="true"
+                android:focusable="false"/>
 
             <Button
                 android:id="@+id/up_save"
