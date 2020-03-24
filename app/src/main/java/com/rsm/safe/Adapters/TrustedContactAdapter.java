@@ -1,0 +1,80 @@
+package com.rsm.safe.Adapters;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.rsm.safe.Bean.TrustedContactModel;
+import com.rsm.safe.Database.SafeDatabase;
+import com.rsm.safe.R;
+
+import java.util.List;
+
+public class TrustedContactAdapter extends RecyclerView.Adapter<TrustedContactAdapter.ViewHolder> {
+
+    Context context;
+    List<TrustedContactModel> contacts;
+
+    public TrustedContactAdapter(Context context, List<TrustedContactModel> contacts) {
+        this.context = context;
+        this.contacts = contacts;
+    }
+
+    @NonNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
+
+        View view = layoutInflater.inflate(R.layout.trusted_contact_layout, parent, false);
+        ViewHolder viewHolder = new ViewHolder(view);
+        return viewHolder;
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        int ID = contacts.get(position).getID();
+        String Name = contacts.get(position).getName();
+        long Number = contacts.get(position).getNumber();
+
+        holder.ID = ID;
+        holder.ContactName.setText(Name);
+        holder.ContactNumber.setText(String.valueOf(Number));
+    }
+
+    @Override
+    public int getItemCount() {
+        return contacts.size();
+    }
+
+    class ViewHolder extends RecyclerView.ViewHolder {
+        private TextView ContactName, ContactNumber;
+        private int ID;
+
+        ViewHolder(@NonNull View itemView) {
+            super(itemView);
+            ContactName = itemView.findViewById(R.id.tLL_NameTextView);
+            ContactNumber = itemView.findViewById(R.id.tLL_NumberTextView);
+            Button removeTrusted = itemView.findViewById(R.id.tLL_SubmitButton);
+
+            removeTrusted.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    SafeDatabase safeDatabase = new SafeDatabase(context);
+                    if (safeDatabase.removeTrusted(ID)){
+                        Toast.makeText(context, "Removed From Trusted", Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        Toast.makeText(context, "Some Thing went Wrong", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        }
+    }
+}

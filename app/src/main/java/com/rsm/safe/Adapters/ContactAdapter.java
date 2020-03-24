@@ -4,14 +4,18 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.rsm.safe.Bean.ContactModel;
+import com.rsm.safe.Bean.TrustedContactModel;
+import com.rsm.safe.Database.SafeDatabase;
 import com.rsm.safe.R;
 
 import java.util.ArrayList;
@@ -87,13 +91,34 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHold
         };
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder {
         private TextView ContactName, ContactNumber;
 
-        public ViewHolder(@NonNull View itemView) {
+        ViewHolder(@NonNull View itemView) {
             super(itemView);
             ContactName = itemView.findViewById(R.id.cLL_NameTextView);
             ContactNumber = itemView.findViewById(R.id.cLL_NumberTextView);
+            Button addTrusted = itemView.findViewById(R.id.cLL_SubmitButton);
+
+            addTrusted.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    SafeDatabase safeDatabase = new SafeDatabase(context);
+                    String name = ContactName.getText().toString();
+                    long number = Long.parseLong(ContactNumber.getText().toString());
+                    TrustedContactModel contact = new TrustedContactModel(0, name, number);
+                    int i = safeDatabase.addTrusted(contact);
+                    if (i == 0){
+                        Toast.makeText(context, "Added To Trusted", Toast.LENGTH_SHORT).show();
+                    }
+                    else if (i == 1){
+                        Toast.makeText(context, "Cannot Add More than 5.", Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        Toast.makeText(context, "Some Thing Went Wrong Please Try Again", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
         }
     }
 }

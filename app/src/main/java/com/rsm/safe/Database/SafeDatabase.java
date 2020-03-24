@@ -18,7 +18,7 @@ public class SafeDatabase extends SQLiteOpenHelper {
 
     private static final String DB_NAME = "SAFE";
     private static final String TABLE_NAME = "SAFE_TABLE";
-    private static final int DB_VERSION = 1;
+    private static final int DB_VERSION = 2;
 
     static final String ID = "ID";
     static final String NAME = "NAME";
@@ -32,9 +32,9 @@ public class SafeDatabase extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         String CREATE_SAFE_TABLE = "CREATE TABLE " + TABLE_NAME + " ("
-                + ID + "INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "
-                + NAME + "TEXT NOT NULL, "
-                + NUMBER + "INTEGER NOT NULL" + " )";
+                + ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "
+                + NAME + " TEXT NOT NULL, "
+                + NUMBER + " INTEGER NOT NULL" + " )";
         sqLiteDatabase.execSQL(CREATE_SAFE_TABLE);
     }
 
@@ -94,7 +94,7 @@ public class SafeDatabase extends SQLiteOpenHelper {
         return true;
     }
 
-    private long getCount(){
+    public long getCount(){
         SQLiteDatabase database = this.getReadableDatabase();
         long count = DatabaseUtils.queryNumEntries(database, TABLE_NAME);
         database.close();

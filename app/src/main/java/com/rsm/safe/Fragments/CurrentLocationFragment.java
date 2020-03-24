@@ -17,24 +17,16 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.rsm.safe.R;
 
-import java.util.Objects;
-
-/**
- * A simple {@link Fragment} subclass.
- */
 public class CurrentLocationFragment extends Fragment implements OnMapReadyCallback{
 
-    Location CurrentLocation;
-    FusedLocationProviderClient fusedLocationProviderClient;
-    View view;
-    MapView mapView;
+    private Location CurrentLocation;
+    private MapView mapView;
 
     public CurrentLocationFragment() {
         // Required empty public constructor
@@ -50,12 +42,11 @@ public class CurrentLocationFragment extends Fragment implements OnMapReadyCallb
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        this.view = view;
 
         mapView = view.findViewById(R.id.cL_MapView);
         mapView.onCreate(savedInstanceState);
         mapView.onResume();
-        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getContext());
+        FusedLocationProviderClient fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getContext());
         Task<Location> locationTask = fusedLocationProviderClient.getLastLocation();
         locationTask.addOnSuccessListener(new OnSuccessListener<Location>() {
             @Override
