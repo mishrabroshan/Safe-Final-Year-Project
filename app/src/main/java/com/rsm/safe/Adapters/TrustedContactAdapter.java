@@ -67,9 +67,14 @@ public class TrustedContactAdapter extends RecyclerView.Adapter<TrustedContactAd
                 @Override
                 public void onClick(View view) {
                     SafeDatabase safeDatabase = new SafeDatabase(context);
-                    safeDatabase.removeTrusted(ID);
-                    contacts.remove(Position);
-                    notifyDataSetChanged();
+                    if (safeDatabase.removeTrusted(ID)){
+                        contacts.remove(Position);
+                        notifyDataSetChanged();
+                        Toast.makeText(context, "Removed", Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        Toast.makeText(context, "Some Thing Went Wrong!..", Toast.LENGTH_SHORT).show();
+                    }
                 }
             });
         }
