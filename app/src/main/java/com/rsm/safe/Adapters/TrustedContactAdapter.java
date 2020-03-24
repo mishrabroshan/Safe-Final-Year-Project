@@ -19,8 +19,8 @@ import java.util.List;
 
 public class TrustedContactAdapter extends RecyclerView.Adapter<TrustedContactAdapter.ViewHolder> {
 
-    Context context;
-    List<TrustedContactModel> contacts;
+    private Context context;
+    private List<TrustedContactModel> contacts;
 
     public TrustedContactAdapter(Context context, List<TrustedContactModel> contacts) {
         this.context = context;
@@ -33,8 +33,7 @@ public class TrustedContactAdapter extends RecyclerView.Adapter<TrustedContactAd
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
 
         View view = layoutInflater.inflate(R.layout.trusted_contact_layout, parent, false);
-        ViewHolder viewHolder = new ViewHolder(view);
-        return viewHolder;
+        return new ViewHolder(view);
     }
 
     @Override
@@ -44,6 +43,7 @@ public class TrustedContactAdapter extends RecyclerView.Adapter<TrustedContactAd
         long Number = contacts.get(position).getNumber();
 
         holder.ID = ID;
+        holder.Position = position;
         holder.ContactName.setText(Name);
         holder.ContactNumber.setText(String.valueOf(Number));
     }
@@ -55,7 +55,7 @@ public class TrustedContactAdapter extends RecyclerView.Adapter<TrustedContactAd
 
     class ViewHolder extends RecyclerView.ViewHolder {
         private TextView ContactName, ContactNumber;
-        private int ID;
+        private int ID, Position;
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -67,12 +67,9 @@ public class TrustedContactAdapter extends RecyclerView.Adapter<TrustedContactAd
                 @Override
                 public void onClick(View view) {
                     SafeDatabase safeDatabase = new SafeDatabase(context);
-                    if (safeDatabase.removeTrusted(ID)){
-                        Toast.makeText(context, "Removed From Trusted", Toast.LENGTH_SHORT).show();
-                    }
-                    else {
-                        Toast.makeText(context, "Some Thing went Wrong", Toast.LENGTH_SHORT).show();
-                    }
+                    safeDatabase.removeTrusted(ID);
+                    contacts.remove(Position);
+                    notifyDataSetChanged();
                 }
             });
         }

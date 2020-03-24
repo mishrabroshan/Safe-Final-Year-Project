@@ -86,9 +86,9 @@ public class SafeDatabase extends SQLiteOpenHelper {
         return list;
     }
 
-    public boolean removeTrusted(int ID){
+    public boolean removeTrusted(int id){
         SQLiteDatabase database = this.getWritableDatabase();
-        if (database.delete(TABLE_NAME, ID + "=?", new String[ID]) == -1){
+        if (database.delete(TABLE_NAME, ID + "=" + id, null) == -1){
             return false;
         }
         return true;
