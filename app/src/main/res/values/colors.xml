@@ -5,4 +5,5 @@
     <color name="colorAccent">#f9a825</color>
     <color name="textColor">#ffffff</color>
     <color name="actionbarColor">#F1F1F1</color>
+    <color name="Danger">#FF0000</color>
 </resources>
