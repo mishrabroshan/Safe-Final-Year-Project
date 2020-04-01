@@ -6,6 +6,7 @@ import android.transition.Fade;
 import android.transition.Transition;
 import android.view.Window;
 import android.view.animation.DecelerateInterpolator;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -31,13 +32,15 @@ public class ConstantsFunction {
         PackageContext.startActivity(intent);
     }
 
-    public static boolean whereToGo(){
+    public static boolean whereToGo(Context context){
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         if (currentUser == null)
             return false;
 
-        if (currentUser.getPhoneNumber() == null || currentUser.getPhotoUrl() == null)
+        if (!currentUser.isEmailVerified()){
+            Toast.makeText(context, "Please Verify Your Email", Toast.LENGTH_SHORT).show();
             return false;
+        }
 
         return true;
     }

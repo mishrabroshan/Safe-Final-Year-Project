@@ -2,17 +2,23 @@ package com.rsm.safe.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.viewpager.widget.ViewPager;
 
+import android.app.Notification;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.RemoteViews;
 
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.rsm.safe.Adapters.TabAdapter;
+import com.rsm.safe.Constants.ConstantsVariables;
+import com.rsm.safe.NotificationManager;
 import com.rsm.safe.R;
 import com.rsm.safe.Constants.ConstantsFunction;
 
@@ -41,6 +47,7 @@ public class HomeActivity extends AppCompatActivity {
         viewPager.setAdapter(tabAdapter);
         tabLayout.setupWithViewPager(viewPager);
 
+        createNotification();
     }
 
     @Override
@@ -65,6 +72,23 @@ public class HomeActivity extends AppCompatActivity {
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void createNotification(){
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+        RemoteViews panic = new RemoteViews(getPackageName(), R.layout.notificationlayout);
+        Intent intent = new Intent(this, NotificationManager.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 5, intent, 0);
+        panic.setOnClickPendingIntent(R.id.panic_button, pendingIntent);
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            Notification notification = new Notification.Builder(this, ConstantsVariables.CHANNELID).
+                    setSmallIcon(R.drawable.logo).
+                    setCustomContentView(panic).
+                    build();
+            notification.flags |= Notification.FLAG_ONGOING_EVENT;
+            notification.flags |= Notification.FLAG_SHOW_LIGHTS;
+            notificationManager.notify(1, notification);
         }
     }
 }

@@ -3,11 +3,9 @@ package com.rsm.safe;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.app.ActivityOptions;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -18,7 +16,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import com.google.firebase.auth.FirebaseAuth;
 import com.rsm.safe.Activities.HomeActivity;
 import com.rsm.safe.Activities.LoginActivity;
 import com.rsm.safe.Constants.ConstantsFunction;
@@ -33,7 +30,8 @@ public class MainActivity extends AppCompatActivity {
             Manifest.permission.READ_CONTACTS,
             Manifest.permission.INTERNET,
             Manifest.permission.ACCESS_COARSE_LOCATION,
-            Manifest.permission.ACCESS_FINE_LOCATION
+            Manifest.permission.ACCESS_FINE_LOCATION,
+            Manifest.permission.SEND_SMS
     };
 
     @Override
@@ -62,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
                 Intent intent;
 
-                if (!ConstantsFunction.whereToGo()) {
+                if (!ConstantsFunction.whereToGo(getApplicationContext())) {
                     intent = new Intent(MainActivity.this, LoginActivity.class);
 
                     Pair[] pairs = new Pair[2];
@@ -82,6 +80,8 @@ public class MainActivity extends AppCompatActivity {
             }
         }, ConstantsVariables.DURATION);
     }
+
+
 
     private void requestPermissions(){
         ActivityCompat.requestPermissions(this, Permissions, ConstantsVariables.PERMISSIONCODE);

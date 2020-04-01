@@ -116,7 +116,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
-                    if (!ConstantsFunction.whereToGo()){
+                    if (!ConstantsFunction.whereToGo(getApplicationContext())){
                         startActivity(new Intent(LoginActivity.this, UpdateProfile.class));
                     }
                     else {
