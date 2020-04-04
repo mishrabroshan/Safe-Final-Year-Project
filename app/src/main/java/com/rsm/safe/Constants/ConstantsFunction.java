@@ -32,12 +32,12 @@ public class ConstantsFunction {
         PackageContext.startActivity(intent);
     }
 
-    public static boolean whereToGo(Context context){
+    public static boolean whereToGo(Context context, int index){
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-        if (currentUser == null)
+        if (currentUser == null && index == 0)
             return false;
 
-        if (!currentUser.isEmailVerified()){
+        if (!currentUser.isEmailVerified() && index == 1){
             Toast.makeText(context, "Please Verify Your Email", Toast.LENGTH_SHORT).show();
             return false;
         }

@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
                 Intent intent;
 
-                if (!ConstantsFunction.whereToGo(getApplicationContext())) {
+                if (!ConstantsFunction.whereToGo(getApplicationContext(), 0)) {
                     intent = new Intent(MainActivity.this, LoginActivity.class);
 
                     Pair[] pairs = new Pair[2];
