@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ActivityOptions;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
@@ -29,10 +31,11 @@ import com.rsm.safe.R;
 import com.rsm.safe.Constants.ConstantsFunction;
 import com.rsm.safe.Constants.ConstantsVariables;
 
+import java.util.Objects;
+
 public class SignUpActivity extends AppCompatActivity {
 
     private TextView appName;
-    private LinearLayout signtext;
     private ImageView logo;
     private RelativeLayout layout;
     private EditText name, email, password, confirmPassword;
@@ -48,9 +51,12 @@ public class SignUpActivity extends AppCompatActivity {
         ConstantsFunction.setTransitionDuration(getWindow());
         ConstantsFunction.removeFade(getWindow());
 
+        NotificationManager notificationManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.cancel(1);
+
         firebaseAuth = FirebaseAuth.getInstance();
 
-        signtext = findViewById(R.id.as_signInText);
+        LinearLayout signtext = findViewById(R.id.as_signInText);
         appName = findViewById(R.id.as_appName);
         logo = findViewById(R.id.logo);
         layout = findViewById(R.id.as_rl2);
@@ -146,12 +152,12 @@ public class SignUpActivity extends AppCompatActivity {
                             setDisplayName(name.getText().toString()).
                             build();
 
-                    firebaseAuth.getCurrentUser().updateProfile(changeRequest);
+                    Objects.requireNonNull(firebaseAuth.getCurrentUser()).updateProfile(changeRequest);
 
                     Toast.makeText(SignUpActivity.this,"Account Created Successfully", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    Toast.makeText(SignUpActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignUpActivity.this, Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
         });

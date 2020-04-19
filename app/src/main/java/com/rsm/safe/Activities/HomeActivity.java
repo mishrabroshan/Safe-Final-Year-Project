@@ -24,12 +24,6 @@ import com.rsm.safe.Constants.ConstantsFunction;
 
 public class HomeActivity extends AppCompatActivity {
 
-    private TabLayout tabLayout;
-    private ViewPager viewPager;
-    private Toolbar toolbar;
-
-    private TabAdapter tabAdapter;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,12 +32,12 @@ public class HomeActivity extends AppCompatActivity {
         ConstantsFunction.removeFade(getWindow());
         ConstantsFunction.setTransitionDuration(getWindow());
 
-        toolbar = findViewById(R.id.up_toolbar);
-        viewPager = findViewById(R.id.h_viewPager);
-        tabLayout = findViewById(R.id.h_tabLayout);
+        Toolbar toolbar = findViewById(R.id.up_toolbar);
+        ViewPager viewPager = findViewById(R.id.h_viewPager);
+        TabLayout tabLayout = findViewById(R.id.h_tabLayout);
 
         setSupportActionBar(toolbar);
-        tabAdapter = new TabAdapter(getSupportFragmentManager());
+        TabAdapter tabAdapter = new TabAdapter(getSupportFragmentManager());
         viewPager.setAdapter(tabAdapter);
         tabLayout.setupWithViewPager(viewPager);
 

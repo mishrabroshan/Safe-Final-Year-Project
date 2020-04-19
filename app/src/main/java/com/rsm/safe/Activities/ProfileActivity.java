@@ -17,11 +17,9 @@ import com.rsm.safe.Constants.ConstantsFunction;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
-public class ProfileActivity extends AppCompatActivity {
+import java.util.Objects;
 
-    private Toolbar toolbar;
-    private ImageView profile;
-    private Button upProfile, signOut;
+public class ProfileActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,17 +29,17 @@ public class ProfileActivity extends AppCompatActivity {
         ConstantsFunction.setTransitionDuration(getWindow());
         ConstantsFunction.removeFade(getWindow());
 
-        toolbar = findViewById(R.id.up_toolbar);
-        profile = findViewById(R.id.profileImage);
-        upProfile = findViewById(R.id.profileUpdateAccount);
-        signOut = findViewById(R.id.profileSignOut);
+        Toolbar toolbar = findViewById(R.id.up_toolbar);
+        ImageView profile = findViewById(R.id.profileImage);
+        Button upProfile = findViewById(R.id.profileUpdateAccount);
+        Button signOut = findViewById(R.id.profileSignOut);
 
         setSupportActionBar(toolbar);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        Picasso.get().load(FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl()).into(profile, new Callback() {
+        Picasso.get().load(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getPhotoUrl()).into(profile, new Callback() {
             @Override
             public void onSuccess() {
                 findViewById(R.id.profileProgressBar).setVisibility(View.GONE);
@@ -74,14 +72,12 @@ public class ProfileActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-            case android.R.id.home:
-                Intent intent = new Intent(ProfileActivity.this, HomeActivity.class);
-                startActivity(intent);
-                finish();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+        if (item.getItemId() == android.R.id.home) {
+            Intent intent = new Intent(ProfileActivity.this, HomeActivity.class);
+            startActivity(intent);
+            finish();
+            return true;
         }
+        return super.onOptionsItemSelected(item);
     }
 }

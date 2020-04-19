@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ActivityOptions;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
@@ -27,10 +29,11 @@ import com.rsm.safe.R;
 import com.rsm.safe.Constants.ConstantsFunction;
 import com.rsm.safe.Constants.ConstantsVariables;
 
+import java.util.Objects;
+
 public class LoginActivity extends AppCompatActivity {
 
     private TextView appname;
-    private LinearLayout signUp;
     private EditText email, password;
     private Button signIn;
     private CheckBox passwordCheckBox;
@@ -48,7 +51,10 @@ public class LoginActivity extends AppCompatActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
 
-        signUp = findViewById(R.id.al_signUpText);
+        NotificationManager notificationManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.cancel(1);
+
+        LinearLayout signUp = findViewById(R.id.al_signUpText);
         appname = findViewById(R.id.al_appName);
         logo = findViewById(R.id.logo);
         layout = findViewById(R.id.al_rl2);
@@ -124,7 +130,7 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 }
                 else {
-                    Toast.makeText(LoginActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
         });

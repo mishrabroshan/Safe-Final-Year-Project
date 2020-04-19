@@ -39,8 +39,6 @@ public class UpdateProfile extends AppCompatActivity {
 
     private EditText nameText, emailText, verified;
     private ImageView profile;
-    private Toolbar toolbar;
-    private Button save;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,12 +51,12 @@ public class UpdateProfile extends AppCompatActivity {
         emailText = findViewById(R.id.up_email);
         verified = findViewById(R.id.up_status);
         profile = findViewById(R.id.up_profileImage);
-        toolbar = findViewById(R.id.up_toolbar);
-        save = findViewById(R.id.up_save);
+        Toolbar toolbar = findViewById(R.id.up_toolbar);
+        Button save = findViewById(R.id.up_save);
 
         setSupportActionBar(toolbar);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         fillData();
@@ -83,7 +81,7 @@ public class UpdateProfile extends AppCompatActivity {
 
                 if (nameText.getText().toString().isEmpty()){
                     nameText.setError(ConstantsVariables.ERROR);
-                    flag = flag;
+                    flag = false;
                 }
 
                 if (!flag)
@@ -91,11 +89,11 @@ public class UpdateProfile extends AppCompatActivity {
 
                 UserProfileChangeRequest.Builder builder = new UserProfileChangeRequest.Builder();
 
-                if (!firebaseAuth.getCurrentUser().getDisplayName().toLowerCase().trim().equals(nameText.getText().toString().trim().toLowerCase())){
+                if (!Objects.requireNonNull(Objects.requireNonNull(firebaseAuth.getCurrentUser()).getDisplayName()).toLowerCase().trim().equals(nameText.getText().toString().trim().toLowerCase())){
                     builder.setDisplayName(nameText.getText().toString());
                 }
 
-                if (!firebaseAuth.getCurrentUser().getEmail().trim().toLowerCase().equals(emailText.getText().toString().trim().toLowerCase())){
+                if (!Objects.requireNonNull(firebaseAuth.getCurrentUser().getEmail()).trim().toLowerCase().equals(emailText.getText().toString().trim().toLowerCase())){
                     emailText.setEnabled(false);
                     firebaseAuth.getCurrentUser().updateEmail(emailText.getText().toString().trim()).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
@@ -131,7 +129,7 @@ public class UpdateProfile extends AppCompatActivity {
     private void uploadToDatabase(final Bitmap image) {
         findViewById(R.id.up_ProgressBar).setVisibility(View.VISIBLE);
         StorageReference mStorageReference = FirebaseStorage.getInstance().getReference().child("profile");
-        final StorageReference mProfile = mStorageReference.child(firebaseAuth.getCurrentUser().getUid() + ".jpg");
+        final StorageReference mProfile = mStorageReference.child(Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid() + ".jpg");
         ByteArrayOutputStream arrayOutputStream = new ByteArrayOutputStream();
         image.compress(Bitmap.CompressFormat.JPEG, 100, arrayOutputStream);
         mProfile.putBytes(arrayOutputStream.toByteArray()).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
@@ -171,7 +169,7 @@ public class UpdateProfile extends AppCompatActivity {
                 }
             });
         }
-        Picasso.get().load(firebaseAuth.getCurrentUser().getPhotoUrl()).into(profile, new Callback() {
+        Picasso.get().load(Objects.requireNonNull(firebaseAuth.getCurrentUser()).getPhotoUrl()).into(profile, new Callback() {
             @Override
             public void onSuccess() {
                 findViewById(R.id.up_ProgressBar).setVisibility(View.GONE);
@@ -187,12 +185,11 @@ public class UpdateProfile extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-            case android.R.id.home:
-                Intent intent = new Intent(UpdateProfile.this, ProfileActivity.class);
-                startActivity(intent);
-                finish();
-                return true;
+        if (item.getItemId() == android.R.id.home) {
+            Intent intent = new Intent(UpdateProfile.this, ProfileActivity.class);
+            startActivity(intent);
+            finish();
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
