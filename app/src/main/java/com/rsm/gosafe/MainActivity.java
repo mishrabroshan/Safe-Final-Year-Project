@@ -1,4 +1,4 @@
-package com.rsm.safe;
+package com.rsm.gosafe;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,10 +16,10 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import com.rsm.safe.Activities.HomeActivity;
-import com.rsm.safe.Activities.LoginActivity;
-import com.rsm.safe.Constants.ConstantsFunction;
-import com.rsm.safe.Constants.ConstantsVariables;
+import com.rsm.gosafe.Activities.HomeActivity;
+import com.rsm.gosafe.Activities.LoginActivity;
+import com.rsm.gosafe.Constants.ConstantsFunction;
+import com.rsm.gosafe.Constants.ConstantsVariables;
 
 public class MainActivity extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package com.rsm.safe.Bean;
+package com.rsm.gosafe.Bean;
 
 public class TrustedContactModel {
     private int ID;

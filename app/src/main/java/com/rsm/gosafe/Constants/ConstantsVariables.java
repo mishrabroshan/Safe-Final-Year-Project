@@ -1,4 +1,4 @@
-package com.rsm.safe.Constants;
+package com.rsm.gosafe.Constants;
 
 public class ConstantsVariables {
 

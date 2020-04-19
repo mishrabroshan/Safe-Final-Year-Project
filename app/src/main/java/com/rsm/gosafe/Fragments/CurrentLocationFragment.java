@@ -1,4 +1,4 @@
-package com.rsm.safe.Fragments;
+package com.rsm.gosafe.Fragments;
 
 import android.location.Location;
 import android.os.Bundle;
@@ -21,7 +21,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.rsm.safe.R;
+import com.rsm.gosafe.R;
 
 public class CurrentLocationFragment extends Fragment implements OnMapReadyCallback{
 

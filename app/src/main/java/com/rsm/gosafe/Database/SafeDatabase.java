@@ -1,4 +1,4 @@
-package com.rsm.safe.Database;
+package com.rsm.gosafe.Database;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -7,7 +7,7 @@ import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.rsm.safe.Bean.TrustedContactModel;
+import com.rsm.gosafe.Bean.TrustedContactModel;
 
 import java.util.ArrayList;
 import java.util.List;

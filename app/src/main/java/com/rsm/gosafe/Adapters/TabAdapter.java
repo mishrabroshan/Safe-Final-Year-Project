@@ -1,4 +1,4 @@
-package com.rsm.safe.Adapters;
+package com.rsm.gosafe.Adapters;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -6,9 +6,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.rsm.safe.Fragments.AllContactFragment;
-import com.rsm.safe.Fragments.CurrentLocationFragment;
-import com.rsm.safe.Fragments.TrustedContactFragment;
+import com.rsm.gosafe.Fragments.AllContactFragment;
+import com.rsm.gosafe.Fragments.CurrentLocationFragment;
+import com.rsm.gosafe.Fragments.TrustedContactFragment;
 
 public class TabAdapter extends FragmentPagerAdapter {
 

@@ -1,15 +1,14 @@
-package com.rsm.safe;
+package com.rsm.gosafe;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.telephony.SmsManager;
-import android.util.Log;
 import android.widget.Toast;
 
-import com.rsm.safe.Bean.TrustedContactModel;
-import com.rsm.safe.Constants.ConstantsVariables;
-import com.rsm.safe.Database.SafeDatabase;
+import com.rsm.gosafe.Bean.TrustedContactModel;
+import com.rsm.gosafe.Constants.ConstantsVariables;
+import com.rsm.gosafe.Database.SafeDatabase;
 
 import java.util.List;
 

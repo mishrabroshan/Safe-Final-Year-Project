@@ -1,4 +1,4 @@
-package com.rsm.safe.Fragments;
+package com.rsm.gosafe.Fragments;
 
 import android.os.Bundle;
 
@@ -13,10 +13,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.rsm.safe.Adapters.TrustedContactAdapter;
-import com.rsm.safe.Bean.TrustedContactModel;
-import com.rsm.safe.Database.SafeDatabase;
-import com.rsm.safe.R;
+import com.rsm.gosafe.Adapters.TrustedContactAdapter;
+import com.rsm.gosafe.Bean.TrustedContactModel;
+import com.rsm.gosafe.Database.SafeDatabase;
+import com.rsm.gosafe.R;
 
 import java.util.List;
 

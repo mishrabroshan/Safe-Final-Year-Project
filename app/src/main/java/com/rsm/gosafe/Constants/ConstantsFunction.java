@@ -1,4 +1,4 @@
-package com.rsm.safe.Constants;
+package com.rsm.gosafe.Constants;
 
 import android.content.Context;
 import android.content.Intent;

@@ -1,4 +1,4 @@
-package com.rsm.safe;
+package com.rsm.gosafe;
 
 import android.content.Context;
 

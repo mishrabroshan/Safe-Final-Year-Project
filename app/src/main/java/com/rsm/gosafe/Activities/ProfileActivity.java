@@ -1,4 +1,4 @@
-package com.rsm.safe.Activities;
+package com.rsm.gosafe.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -12,8 +12,8 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.rsm.safe.R;
-import com.rsm.safe.Constants.ConstantsFunction;
+import com.rsm.gosafe.R;
+import com.rsm.gosafe.Constants.ConstantsFunction;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 

@@ -1,4 +1,4 @@
-package com.rsm.safe.Adapters;
+package com.rsm.gosafe.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,9 +11,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.rsm.safe.Bean.TrustedContactModel;
-import com.rsm.safe.Database.SafeDatabase;
-import com.rsm.safe.R;
+import com.rsm.gosafe.Bean.TrustedContactModel;
+import com.rsm.gosafe.Database.SafeDatabase;
+import com.rsm.gosafe.R;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.rsm.safe.Fragments;
+package com.rsm.gosafe.Fragments;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -20,9 +20,9 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 
-import com.rsm.safe.Adapters.ContactAdapter;
-import com.rsm.safe.Bean.ContactModel;
-import com.rsm.safe.R;
+import com.rsm.gosafe.Adapters.ContactAdapter;
+import com.rsm.gosafe.Bean.ContactModel;
+import com.rsm.gosafe.R;
 
 import java.util.ArrayList;
 import java.util.List;

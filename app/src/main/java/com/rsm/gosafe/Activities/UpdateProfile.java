@@ -1,4 +1,4 @@
-package com.rsm.safe.Activities;
+package com.rsm.gosafe.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,8 +25,8 @@ import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.rsm.safe.Constants.ConstantsVariables;
-import com.rsm.safe.R;
+import com.rsm.gosafe.Constants.ConstantsVariables;
+import com.rsm.gosafe.R;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 

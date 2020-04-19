@@ -1,4 +1,4 @@
-package com.rsm.safe.Activities;
+package com.rsm.gosafe.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,9 +27,9 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.UserProfileChangeRequest;
-import com.rsm.safe.R;
-import com.rsm.safe.Constants.ConstantsFunction;
-import com.rsm.safe.Constants.ConstantsVariables;
+import com.rsm.gosafe.R;
+import com.rsm.gosafe.Constants.ConstantsFunction;
+import com.rsm.gosafe.Constants.ConstantsVariables;
 
 import java.util.Objects;
 

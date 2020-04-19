@@ -1,4 +1,4 @@
-package com.rsm.safe.Activities;
+package com.rsm.gosafe.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -16,11 +16,11 @@ import android.widget.RemoteViews;
 
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
-import com.rsm.safe.Adapters.TabAdapter;
-import com.rsm.safe.Constants.ConstantsVariables;
-import com.rsm.safe.NotificationManager;
-import com.rsm.safe.R;
-import com.rsm.safe.Constants.ConstantsFunction;
+import com.rsm.gosafe.Adapters.TabAdapter;
+import com.rsm.gosafe.Constants.ConstantsVariables;
+import com.rsm.gosafe.NotificationManager;
+import com.rsm.gosafe.R;
+import com.rsm.gosafe.Constants.ConstantsFunction;
 
 public class HomeActivity extends AppCompatActivity {
 

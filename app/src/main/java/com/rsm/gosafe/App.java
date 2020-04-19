@@ -1,11 +1,11 @@
-package com.rsm.safe;
+package com.rsm.gosafe;
 
 import android.app.Application;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.os.Build;
 
-import com.rsm.safe.Constants.ConstantsVariables;
+import com.rsm.gosafe.Constants.ConstantsVariables;
 
 public class App extends Application {
     @Override

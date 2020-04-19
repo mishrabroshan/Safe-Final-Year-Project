@@ -8,20 +8,12 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:875167116880:android:8255027f7bdc68fe072b55",
+        "mobilesdk_app_id": "1:875167116880:android:ab785a01eecb3a02072b55",
         "android_client_info": {
-          "package_name": "com.rsm.safe"
+          "package_name": "com.rsm.gosafe"
         }
       },
       "oauth_client": [
-        {
-          "client_id": "875167116880-14hjd315jorrj90rl196t6bhfepgemnb.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.rsm.safe",
-            "certificate_hash": "247319e039721d65c2d14963b71f9fa0e349929b"
-          }
-        },
         {
           "client_id": "875167116880-04a0ipdg7cthosdbjtd1lc9bvs523i4a.apps.googleusercontent.com",
           "client_type": 3
