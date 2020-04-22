@@ -2,11 +2,25 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
 
 android {
+    signingConfigs {
+        release {
+            storeFile file('D:\\Projects\\keystore\\jkskeys.jks')
+            storePassword 'Roshan@123'
+            keyPassword 'Roshan@123'
+            keyAlias = 'jksKeys'
+        }
+        debug {
+            storeFile file('D:\\Projects\\keystore\\jkskeys.jks')
+            storePassword 'Roshan@123'
+            keyAlias = 'jksKeys'
+            keyPassword 'Roshan@123'
+        }
+    }
     compileSdkVersion 28
     buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "com.rsm.gosafe"
-        minSdkVersion 21
+        minSdkVersion 26
         targetSdkVersion 28
         versionCode 5
         versionName "1.0.0"
